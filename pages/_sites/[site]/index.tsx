@@ -1,5 +1,6 @@
 /** Add your relevant code here for the issue to reproduce */
 import { useRouter } from 'next/router'
+import { useRef } from 'react'
 
 export const getStaticPaths = async () => {
 	const subdomains = ['a']
@@ -18,6 +19,10 @@ export const getStaticProps = async ({ params }) => {
 export default function Site() {
   const router = useRouter()
 
+  const renderCounter  = useRef(0);
+
+  renderCounter.current++
+
   return (
     <>
       <button onClick={() => {
@@ -33,15 +38,8 @@ export default function Site() {
         Shallow routing
       </button>
 
-      <button onClick={() => {
-        router.push({
-          pathname: '/',
-          query: { hello: 'world', site: 'a' }
-        })
-      }}>
-        Standard routing
-      </button>
-    </>
-    
+      <p>Renders: {renderCounter.current}</p>
+
+    </>    
   )
 }
