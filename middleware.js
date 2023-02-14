@@ -22,7 +22,9 @@ export default async (req, ev) => {
 
 	// Subdomain
 	if (host === 'a') {
-		console.log('→ rewrite()')
+		const url = new URL(`/_sites/${host}${pathname}${search}`, req.nextUrl)
+
+		console.log(`→ rewrite() to ${url.toString()}`)
 
 		return NextResponse.rewrite(new URL(`/_sites/${host}${pathname}${search}`, req.nextUrl))
 	}

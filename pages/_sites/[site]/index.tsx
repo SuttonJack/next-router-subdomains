@@ -19,10 +19,19 @@ export default function Site() {
   const router = useRouter()
 
   return (
-    <button onClick={() => {
-      router.push({ query: { hello: 'world', site: 'a' } }, undefined, { shallow: true })
-    }}>
-      Click me
-    </button>
+    <>
+      <button onClick={() => {
+        router.push({ query: { hello: 'world', site: 'a' } }, undefined, { shallow: true })
+      }}>
+        Shallow routing
+      </button>
+
+      <button onClick={() => {
+        router.push({ query: { hello: 'world', site: 'a' } })
+      }}>
+        Standard routing
+      </button>
+    </>
+    
   )
 }
