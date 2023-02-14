@@ -21,13 +21,23 @@ export default function Site() {
   return (
     <>
       <button onClick={() => {
-        router.push({ query: { hello: 'world', site: 'a' } }, undefined, { shallow: true })
+        router.push(
+          {
+            pathname: '/',
+            query: { hello: 'world', site: 'a' }
+          },
+          undefined,
+          { shallow: true }
+        )
       }}>
         Shallow routing
       </button>
 
       <button onClick={() => {
-        router.push({ query: { hello: 'world', site: 'a' } })
+        router.push({
+          pathname: '/',
+          query: { hello: 'world', site: 'a' }
+        })
       }}>
         Standard routing
       </button>
