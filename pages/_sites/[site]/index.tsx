@@ -18,6 +18,7 @@ export const getStaticProps = async ({ params }) => {
 
 export default function Site() {
   const router = useRouter()
+  const { query: { site }, pathname } = router
 
   const renderCounter  = useRef(0);
 
@@ -28,10 +29,10 @@ export default function Site() {
       <button onClick={() => {
         router.push(
           {
-            pathname: '/',
-            query: { hello: 'world', site: 'a' }
+            pathname,
+            query: { site, hello: 'world' },
           },
-          undefined,
+          { pathname: '/', query: { hello: 'world' } },
           { shallow: true }
         )
       }}>
